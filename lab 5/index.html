@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа № 5 — вариант 8</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="page">
+        <h1 class="page__title">Каталог товаров</h1>
+        <p class="page__subtitle">Лабораторная работа № 5 · Вариант 8: псевдоэлементы для стилизации</p>
+
+        <!-- Сообщение доступно скринридеру, но визуально скрыто -->
+        <div id="live-region" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+
+        <article class="card" aria-labelledby="product-title" aria-describedby="product-desc">
+            <div class="card__image-wrapper">
+                <!-- Декоративная иллюстрация, не дублирует информацию для скринридера -->
+                <div class="card__illustration" aria-hidden="true">
+                    <span class="card__headband"></span>
+                    <span class="card__earcup card__earcup--left"></span>
+                    <span class="card__earcup card__earcup--right"></span>
+                </div>
+                <span class="card__badge" aria-hidden="true">Хит</span>
+            </div>
+
+            <div class="card__content">
+                <h2 class="card__title" id="product-title">Беспроводные наушники</h2>
+                <p class="card__description" id="product-desc">
+                    Отличный звук, шумоподавление и до 30 часов работы без подзарядки.
+                </p>
+
+                <!-- Индивидуальное задание, вариант 8: стилизованный список -->
+                <section class="features" aria-labelledby="features-title">
+                    <h3 class="features__title" id="features-title">Преимущества модели</h3>
+                    <ul class="features__list">
+                        <li class="features__item">Активное шумоподавление</li>
+                        <li class="features__item">До 30 часов автономной работы</li>
+                        <li class="features__item">Быстрая зарядка USB-C</li>
+                        <li class="features__item">Удобная посадка и мягкие амбушюры</li>
+                    </ul>
+                    <p class="features__note">Все функции для комфортного прослушивания</p>
+                </section>
+
+                <p class="card__price" aria-label="Цена товара: 7990 рублей">
+                    <span class="card__price-value">7 990 ₽</span>
+                </p>
+
+                <button class="card__button button button--primary" type="button"
+                        aria-label="Добавить беспроводные наушники в корзину" id="add-to-cart">
+                    <span class="button__icon" aria-hidden="true">🛒</span>
+                    <span class="button__text">В корзину</span>
+                </button>
+                <a href="#features-title" class="card__link link"
+                   aria-label="Подробнее о преимуществах беспроводных наушников">Подробнее</a>
+            </div>
+        </article>
+    </main>
+
+    <script>
+        const addToCartButton = document.getElementById('add-to-cart');
+        const liveRegion = document.getElementById('live-region');
+        let announcementTimer;
+
+        function addToCart() {
+            clearTimeout(announcementTimer);
+            liveRegion.textContent = '';
+            // Обновление в следующем кадре позволяет повторно объявлять сообщение.
+            requestAnimationFrame(() => {
+                liveRegion.textContent = 'Беспроводные наушники добавлены в корзину';
+            });
+            announcementTimer = setTimeout(() => {
+                liveRegion.textContent = '';
+            }, 3000);
+        }
+
+        addToCartButton.addEventListener('click', addToCart);
+    </script>
+</body>
+</html>
