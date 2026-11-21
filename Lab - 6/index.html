@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Адаптивный макет файлового менеджера для лабораторной работы № 6">
+  <title>Файлы — файловый менеджер</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" aria-label="Боковая навигация">
+      <a class="brand" href="#main" aria-label="Обзор файлов">
+        <span class="brand__mark" aria-hidden="true">F</span><span class="brand__name">Файлы</span>
+      </a>
+      <button class="sidebar__action" type="button"><span aria-hidden="true">＋</span> Загрузить файл</button>
+      <nav class="nav" aria-label="Разделы хранилища">
+        <p class="nav__caption">Рабочее пространство</p>
+        <a class="nav__link nav__link--active" href="#recent"><span class="nav__icon" aria-hidden="true">▦</span> Мои файлы <span class="nav__count">24</span></a>
+        <a class="nav__link" href="#recent"><span class="nav__icon" aria-hidden="true">◷</span> Недавние</a>
+        <a class="nav__link" href="#favorites"><span class="nav__icon" aria-hidden="true">☆</span> Избранное</a>
+        <a class="nav__link" href="#shared"><span class="nav__icon" aria-hidden="true">♧</span> Общий доступ</a>
+        <a class="nav__link" href="#trash"><span class="nav__icon" aria-hidden="true">▤</span> Корзина</a>
+      </nav>
+      <section class="storage" aria-label="Использование хранилища">
+        <div class="storage__heading"><span>Хранилище</span><span>68%</span></div>
+        <div class="storage__bar"><span></span></div>
+        <p class="storage__text">6,8 ГБ из 10 ГБ занято</p>
+        <a class="storage__link" href="#storage">Управлять хранилищем <span aria-hidden="true">→</span></a>
+      </section>
+      <div class="profile"><span class="profile__avatar">А</span><span class="profile__meta"><strong>Александр</strong><small>Личный аккаунт</small></span><span class="profile__more" aria-hidden="true">···</span></div>
+    </aside>
+
+    <main class="main" id="main">
+      <header class="topbar">
+        <button class="topbar__menu" type="button" aria-label="Открыть меню">☰</button>
+        <label class="search"><span class="search__icon" aria-hidden="true">⌕</span><span class="visually-hidden">Поиск файлов</span><input type="search" placeholder="Поиск файлов и папок"><kbd>⌘ K</kbd></label>
+        <button class="topbar__help" type="button" aria-label="Помощь">?</button>
+        <span class="topbar__avatar" aria-label="Профиль Александра">А</span>
+      </header>
+
+      <div class="content">
+        <div class="page-heading">
+          <div><p class="eyebrow">РАБОЧЕЕ ПРОСТРАНСТВО</p><h1>Мои файлы</h1><p class="page-heading__sub">Все ваши проекты и документы в одном месте.</p></div>
+          <button class="button button--primary" type="button"><span aria-hidden="true">＋</span> Создать</button>
+        </div>
+        <section class="quick-stats" aria-label="Обзор файлов">
+          <article class="stat-card"><span class="stat-card__icon stat-card__icon--violet" aria-hidden="true">▰</span><div><strong>24</strong><span>Всего файлов</span></div><span class="stat-card__trend">↗ 12%</span></article>
+          <article class="stat-card"><span class="stat-card__icon stat-card__icon--blue" aria-hidden="true">▱</span><div><strong>8</strong><span>Папок</span></div><span class="stat-card__trend">За неделю</span></article>
+          <article class="stat-card"><span class="stat-card__icon stat-card__icon--mint" aria-hidden="true">⇧</span><div><strong>2,4 ГБ</strong><span>Загружено</span></div><span class="stat-card__trend">из 10 ГБ</span></article>
+        </section>
+
+        <section class="section" id="favorites">
+          <div class="section__heading"><div><h2>Быстрый доступ</h2><p>Часто используемые папки</p></div><a class="text-link" href="#folders">Все папки <span aria-hidden="true">→</span></a></div>
+          <div class="folder-grid">
+            <article class="folder-card"><div class="folder-card__top"><span class="folder-icon folder-icon--purple" aria-hidden="true"><span></span></span><button class="more" type="button" aria-label="Действия: Дизайн">···</button></div><h3>Дизайн</h3><p>12 файлов · Изменено сегодня</p></article>
+            <article class="folder-card"><div class="folder-card__top"><span class="folder-icon folder-icon--blue" aria-hidden="true"><span></span></span><button class="more" type="button" aria-label="Действия: Документы">···</button></div><h3>Документы</h3><p>8 файлов · Изменено вчера</p></article>
+            <article class="folder-card"><div class="folder-card__top"><span class="folder-icon folder-icon--orange" aria-hidden="true"><span></span></span><button class="more" type="button" aria-label="Действия: Фотографии">···</button></div><h3>Фотографии</h3><p>36 файлов · Изменено 14 мая</p></article>
+            <article class="folder-card"><div class="folder-card__top"><span class="folder-icon folder-icon--green" aria-hidden="true"><span></span></span><button class="more" type="button" aria-label="Действия: Архив">···</button></div><h3>Архив</h3><p>5 файлов · Изменено 12 мая</p></article>
+          </div>
+        </section>
+
+        <section class="section" id="recent">
+          <div class="section__heading section__heading--files"><div><h2>Недавние файлы</h2><p>Файлы, с которыми вы работали недавно</p></div><div class="file-controls"><button class="filter filter--active" type="button">Все файлы</button><button class="filter" type="button">Документы</button><button class="filter" type="button">Изображения</button><button class="view-toggle" type="button" aria-label="Вид сеткой">▦</button></div></div>
+          <div class="file-table" role="table" aria-label="Недавние файлы">
+            <div class="file-table__head" role="row"><span role="columnheader">Имя</span><span role="columnheader">Последнее изменение</span><span role="columnheader">Размер</span><span role="columnheader">Владелец</span><span aria-hidden="true"></span></div>
+            <div class="file-row" role="row"><span class="file-row__name" role="cell"><span class="file-type file-type--figma">F</span><span><strong>Главная страница.fig</strong><small>Дизайн / Проект «Север»</small></span></span><span class="file-row__date" role="cell">Сегодня, 10:42</span><span class="file-row__size" role="cell">24,8 МБ</span><span class="owner" role="cell"><span class="owner__avatar owner__avatar--pink">А</span>Вы</span><button class="more" type="button" aria-label="Действия: Главная страница">···</button></div>
+            <div class="file-row" role="row"><span class="file-row__name" role="cell"><span class="file-type file-type--pdf">PDF</span><span><strong>Техническое задание.pdf</strong><small>Документы / Проект «Север»</small></span></span><span class="file-row__date" role="cell">Вчера, 16:20</span><span class="file-row__size" role="cell">3,2 МБ</span><span class="owner" role="cell"><span class="owner__avatar owner__avatar--blue">МК</span>Мария</span><button class="more" type="button" aria-label="Действия: Техническое задание">···</button></div>
+            <div class="file-row" role="row"><span class="file-row__name" role="cell"><span class="file-type file-type--sheet">XLS</span><span><strong>Бюджет проекта.xlsx</strong><small>Документы / Финансы</small></span></span><span class="file-row__date" role="cell">15 мая, 09:14</span><span class="file-row__size" role="cell">680 КБ</span><span class="owner" role="cell"><span class="owner__avatar owner__avatar--mint">И</span>Иван</span><button class="more" type="button" aria-label="Действия: Бюджет проекта">···</button></div>
+            <div class="file-row" role="row"><span class="file-row__name" role="cell"><span class="file-type file-type--image">JPG</span><span><strong>Обложка проекта.jpg</strong><small>Фотографии / Проект «Север»</small></span></span><span class="file-row__date" role="cell">14 мая, 18:06</span><span class="file-row__size" role="cell">5,6 МБ</span><span class="owner" role="cell"><span class="owner__avatar owner__avatar--purple">А</span>Вы</span><button class="more" type="button" aria-label="Действия: Обложка проекта">···</button></div>
+            <div class="file-row" role="row"><span class="file-row__name" role="cell"><span class="file-type file-type--doc">DOC</span><span><strong>Заметки по встрече.docx</strong><small>Документы / Встречи</small></span></span><span class="file-row__date" role="cell">12 мая, 11:30</span><span class="file-row__size" role="cell">128 КБ</span><span class="owner" role="cell"><span class="owner__avatar owner__avatar--orange">Е</span>Елена</span><button class="more" type="button" aria-label="Действия: Заметки по встрече">···</button></div>
+          </div>
+          <button class="load-more" type="button">Показать все файлы <span aria-hidden="true">→</span></button>
+        </section>
+        <footer class="footer"><span>Файлы <span aria-hidden="true">·</span> Лабораторная работа № 6</span><span>Макет интерфейса · 2026</span></footer>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
